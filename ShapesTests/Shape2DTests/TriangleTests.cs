@@ -24,4 +24,17 @@ public class TriangleTests
     {
         Assert.Throws<ArgumentException>(() => new Triangle(sideA, sideB, sideC));
     }
+
+    [Theory]
+    [InlineData(3, 4, 5, true)]
+    [InlineData(5, 12, 13, true)]
+    [InlineData(8, 15, 17, true)]
+    [InlineData(7, 24, 25, true)]
+    [InlineData(3, 3, 3, false)]
+    [InlineData(5, 5, 5, false)]
+    public void IsRightTriangle_CorrectlyIdentifiesRightTriangles(decimal sideA, decimal sideB, decimal sideC, bool expected)
+    {
+        var triangle = new Triangle(sideA, sideB, sideC);
+        Assert.Equal(expected, triangle.IsRightTriangle);
+    }
 }

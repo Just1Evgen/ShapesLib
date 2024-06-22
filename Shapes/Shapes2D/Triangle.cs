@@ -22,6 +22,23 @@ public class Triangle : IShape2D
         }
     }
 
+    /// <summary>
+    /// Является ли треугольник прямоугольным
+    /// </summary>
+    public bool IsRightTriangle
+    {
+        get
+        {
+            decimal aSquared = SideA * SideA;
+            decimal bSquared = SideB * SideB;
+            decimal cSquared = SideC * SideC;
+
+            return aSquared + bSquared == cSquared ||
+                   aSquared + cSquared == bSquared ||
+                   bSquared + cSquared == aSquared;
+        }
+    }
+
     public Triangle(decimal sideA, decimal sideB, decimal sideC)
     {
         if (sideA <= 0 || sideB <= 0 || sideC <= 0)
